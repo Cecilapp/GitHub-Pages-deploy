@@ -3,7 +3,7 @@
 set -e
 
 USER_NAME="$GITHUB_ACTOR"
-USER_EMAIL="$GITHUB_ACTOR@noreply.com"
+USER_EMAIL="$GITHUB_ACTOR@users.noreply.github.com"
 REPOSITORY="$GITHUB_REPOSITORY"
 REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)"
 OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)"
