@@ -37,5 +37,3 @@ git commit -m "$USER_NAME push updated website"
 git push -fq origin $TARGET_BRANCH > /dev/null
 
 echo "Finished deploy"
-
-exit 0
