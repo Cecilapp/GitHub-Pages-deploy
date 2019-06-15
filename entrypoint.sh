@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/sh
+
+set -e
 
 USER_NAME="$GITHUB_ACTOR"
 USER_EMAIL="$GITHUB_ACTOR@noreply.com"
@@ -16,7 +18,7 @@ then
     SITE_DIR="_site"
 fi
 
-echo "Started deploy to $REPOSITORY/$TARGET_BRANCH"
+echo "### Started deploy to $REPOSITORY/$TARGET_BRANCH"
 
 cp -R $SITE_DIR $HOME/$SITE_DIR
 cd $HOME
@@ -36,4 +38,4 @@ git add -Af .
 git commit -m "$USER_NAME push updated website"
 git push -fq origin $TARGET_BRANCH > /dev/null
 
-echo "Finished deploy"
+echo "### Finished deploy"
