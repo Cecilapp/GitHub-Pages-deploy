@@ -1,4 +1,4 @@
-# GHPages deploy Action
+# GitHub Pages deploy Action
 
 A GitHub Action to deploy to GitHub Pages.
 
