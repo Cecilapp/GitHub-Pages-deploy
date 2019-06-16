@@ -34,6 +34,10 @@ if [ ! -z "$CNAME" ]
 then
     echo "$CNAME" > CNAME
 fi
+if [ ! -z "$NO_JEKYLL" ]
+then
+    echo "It is not a Jekyll site!" > .nojekyll
+fi
 git add -Af .
 git commit -m "$USER_NAME push updated website"
 git push -fq origin $TARGET_BRANCH > /dev/null
