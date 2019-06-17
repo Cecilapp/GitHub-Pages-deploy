@@ -44,7 +44,7 @@ then
   echo "$CNAME" > CNAME
 fi
 # .nojekyll
-if [ "$JEKYLL_SITE" == "NO" ]
+if [ "$JEKYLL_SITE" != "YES" ]
 then
   echo "Disable Jekyll"
   touch .nojekyll
