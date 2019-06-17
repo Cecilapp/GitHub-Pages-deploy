@@ -1,6 +1,6 @@
 # GitHub Pages deploy Action
 
-A GitHub Action to deploy to GitHub Pages.
+A GitHub Action to deploy a static site on GitHub Pages.
 
 ## Usage
 
