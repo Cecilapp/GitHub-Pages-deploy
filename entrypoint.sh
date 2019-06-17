@@ -16,7 +16,7 @@ fi
 # build dir
 if [ -z "$SITE_DIR" ]
 then
-    SITE_DIR="_site"
+  SITE_DIR="_site"
 fi
 
 echo "### Started deploy to $REPOSITORY/$TARGET_BRANCH"
@@ -34,12 +34,14 @@ cp -Rf $HOME/$SITE_DIR/* .
 # custom domain?
 if [ ! -z "$CNAME" ]
 then
-    echo "$CNAME" > CNAME
+  echo "Add custom domain file"
+  echo "$CNAME" > CNAME
 fi
 # .nojekyll
 if [ "$JEKYLL_SITE" == "NO" ]
 then
-    touch .nojekyll
+  echo "Disable Jekyll"
+  touch .nojekyll
 fi
 git add -Af .
 git commit -m "$USER_NAME published a site update"
