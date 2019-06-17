@@ -50,7 +50,7 @@ then
   touch .nojekyll
 fi
 git add -Af .
-git commit -m "$USER_NAME ($USER_EMAIL) published a site update"
+git commit -m "$USER_NAME <$USER_EMAIL> published a site update"
 git push -fq origin $TARGET_BRANCH > /dev/null
 
 echo "### Finished deploy"
