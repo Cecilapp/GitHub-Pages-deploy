@@ -2,7 +2,13 @@
 set -e
 
 USER_NAME="$GITHUB_ACTOR"
-USER_EMAIL="$GITHUB_ACTOR@users.noreply.github.com"
+# commiter email
+if [ -z "$EMAIL" ]
+then
+  echo "A verified email is required"
+  exit 1
+fi
+USER_EMAIL="EMAIL"
 REPOSITORY="$GITHUB_REPOSITORY"
 REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)"
 OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)"
