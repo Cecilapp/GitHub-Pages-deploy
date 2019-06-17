@@ -8,7 +8,7 @@ then
   echo "A verified email is required"
   exit 1
 fi
-USER_EMAIL="EMAIL"
+USER_EMAIL="$EMAIL"
 REPOSITORY="$GITHUB_REPOSITORY"
 REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)"
 OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)"
@@ -50,7 +50,7 @@ then
   touch .nojekyll
 fi
 git add -Af .
-git commit -m "$USER_NAME published a site update"
+git commit -m "$USER_NAME ($USER_EMAIL) published a site update"
 git push -fq origin $TARGET_BRANCH > /dev/null
 
 echo "### Finished deploy"
