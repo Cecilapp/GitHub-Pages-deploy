@@ -46,8 +46,12 @@ then
   echo "Disable Jekyll"
   touch .nojekyll
 fi
-git add -Af .
-git commit -m "$GITHUB_ACTOR published a site update"
-git push -fq origin $TARGET_BRANCH > /dev/null
+if [ -z "$(git status --porcelain)" ]; then
+  echo "Nothing to deploy"
+else
+  git add -Af .
+  git commit -m "$GITHUB_ACTOR published a site update"
+  git push -fq origin $TARGET_BRANCH > /dev/null
+fi
 
 echo "### Finished deploy"
