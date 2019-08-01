@@ -46,6 +46,7 @@ then
   echo "Disable Jekyll"
   touch .nojekyll
 fi
+# Nothing to deploy?
 if [ -z "$(git status --porcelain)" ]; then
   echo "Nothing to deploy"
 else
