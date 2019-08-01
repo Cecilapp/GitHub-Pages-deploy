@@ -2,6 +2,8 @@
 
 A GitHub Action to deploy a static site on GitHub Pages.
 
+![Deploy to GitHub Pages](GitHub-Pages-deploy.gif)
+
 ## Usage
 
 ```hcl
