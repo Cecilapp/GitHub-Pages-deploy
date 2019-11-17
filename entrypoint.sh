@@ -2,8 +2,7 @@
 set -e
 
 # commiter email
-if [ -z "$EMAIL" ]
-then
+if [ -z "$EMAIL" ]; then
   echo "A verified email is required"
   exit 1
 fi
@@ -17,8 +16,7 @@ else
   TARGET_BRANCH="gh-pages"
 fi
 # build dir
-if [ -z "$BUILD_DIR" ]
-then
+if [ -z "$BUILD_DIR" ]; then
   BUILD_DIR="_site"
 fi
 
@@ -28,21 +26,31 @@ cp -R $BUILD_DIR $HOME/$BUILD_DIR
 cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$EMAIL"
-git clone --quiet --branch=$TARGET_BRANCH https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
-cp -R gh-pages/.git $HOME/.git
-rm -rf gh-pages/*
-cp -R $HOME/.git gh-pages/.git
-cd gh-pages
+if [ -z "$(git ls-remote --heads https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${TARGET_BRANCH})" ]; then
+  git clone --quiet https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
+  cd $TARGET_BRANCH
+  git checkout --orphan $TARGET_BRANCH
+  git rm -rf .
+  echo "$REPONAME" > README.md
+  git add README.md
+  git commit -a -m "Create $TARGET_BRANCH branch"
+  git push origin $TARGET_BRANCH
+  cd ..
+else
+  git clone --quiet --branch=$TARGET_BRANCH https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
+fi
+cp -R $TARGET_BRANCH/.git $HOME/.git
+rm -rf $TARGET_BRANCH/*
+cp -R $HOME/.git $TARGET_BRANCH/.git
+cd $TARGET_BRANCH
 cp -Rf $HOME/${BUILD_DIR}/* .
 # custom domain?
-if [ ! -z "$CNAME" ]
-then
+if [ ! -z "$CNAME" ]; then
   echo "Add custom domain file"
   echo "$CNAME" > CNAME
 fi
 # .nojekyll
-if [ "$JEKYLL_SITE" != "YES" ]
-then
+if [ "$JEKYLL_SITE" != "YES" ]; then
   echo "Disable Jekyll"
   touch .nojekyll
 fi
