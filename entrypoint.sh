@@ -28,12 +28,14 @@ git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$EMAIL"
 if [ -z "$(git ls-remote --heads https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${TARGET_BRANCH})" ]; then
   git clone --quiet https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
+  cd $TARGET_BRANCH
   git checkout --orphan $TARGET_BRANCH
   git rm -rf .
   echo "$REPONAME" > README.md
   git add README.md
   git commit -a -m "Initial Commit"
   git push origin $TARGET_BRANCH
+  cd ..
 else
   git clone --quiet --branch=$TARGET_BRANCH https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
 fi
