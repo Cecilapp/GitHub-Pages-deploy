@@ -28,7 +28,7 @@ cp -R $BUILD_DIR $HOME/$BUILD_DIR
 cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$EMAIL"
-if [ "git branch --list ${TARGET_BRANCH}" ]
+if [ "git branch -a --list ${TARGET_BRANCH}" ]
 then
   git clone --quiet --branch=$TARGET_BRANCH https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
 else
