@@ -34,6 +34,10 @@ then
 else
   git checkout --orphan $TARGET_BRANCH
   git rm -rf .
+  echo "$REPONAME" > README.md
+  git add README.md
+  git commit -a -m "Initial Commit"
+  git push origin $TARGET_BRANCH
 fi
 cp -R gh-pages/.git $HOME/.git
 rm -rf gh-pages/*
