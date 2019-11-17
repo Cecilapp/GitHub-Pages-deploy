@@ -27,7 +27,8 @@ cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$EMAIL"
 if [ -z "$(git ls-remote --heads https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${TARGET_BRANCH})" ]; then
-  git checkout --orphan https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH
+  git clone --quiet https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
+  git checkout --orphan $TARGET_BRANCH
   git rm -rf .
   echo "$REPONAME" > README.md
   git add README.md
@@ -36,10 +37,10 @@ if [ -z "$(git ls-remote --heads https://${GH_TOKEN}@github.com/${GITHUB_REPOSIT
 else
   git clone --quiet --branch=$TARGET_BRANCH https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
 fi
-cp -R gh-pages/.git $HOME/.git
-rm -rf gh-pages/*
-cp -R $HOME/.git gh-pages/.git
-cd gh-pages
+cp -R $TARGET_BRANCH/.git $HOME/.git
+rm -rf $TARGET_BRANCH/*
+cp -R $HOME/.git $TARGET_BRANCH/.git
+cd $TARGET_BRANCH
 cp -Rf $HOME/${BUILD_DIR}/* .
 # custom domain?
 if [ ! -z "$CNAME" ]; then
