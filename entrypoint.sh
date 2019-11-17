@@ -26,7 +26,7 @@ cp -R $BUILD_DIR $HOME/$BUILD_DIR
 cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$EMAIL"
-if [ -z "$(git branch -a --list ${TARGET_BRANCH})" ]; then
+if [ -z "$(git ls-remote --heads https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${TARGET_BRANCH})" ]; then
   git checkout --orphan $TARGET_BRANCH
   git rm -rf .
   echo "$REPONAME" > README.md
