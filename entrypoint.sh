@@ -28,7 +28,13 @@ cp -R $BUILD_DIR $HOME/$BUILD_DIR
 cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$EMAIL"
-git clone --quiet --branch=$TARGET_BRANCH https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
+if [ "git branch --list ${TARGET_BRANCH}" ]
+then
+  git clone --quiet --branch=$TARGET_BRANCH https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
+else
+  git checkout --orphan $TARGET_BRANCH
+  git rm -rf .
+fi
 cp -R gh-pages/.git $HOME/.git
 rm -rf gh-pages/*
 cp -R $HOME/.git gh-pages/.git
