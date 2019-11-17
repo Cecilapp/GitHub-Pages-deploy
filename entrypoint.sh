@@ -2,7 +2,7 @@
 set -e
 
 # commiter email
-if [ -z "$EMAIL" ] then
+if [ -z "$EMAIL" ]; then
   echo "A verified email is required"
   exit 1
 fi
@@ -16,7 +16,7 @@ else
   TARGET_BRANCH="gh-pages"
 fi
 # build dir
-if [ -z "$BUILD_DIR" ] then
+if [ -z "$BUILD_DIR" ]; then
   BUILD_DIR="_site"
 fi
 
@@ -26,7 +26,7 @@ cp -R $BUILD_DIR $HOME/$BUILD_DIR
 cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$EMAIL"
-if [ -z "$(git branch -a --list ${TARGET_BRANCH})" ] then
+if [ -z "$(git branch -a --list ${TARGET_BRANCH})" ]; then
   git checkout --orphan $TARGET_BRANCH
   git rm -rf .
   echo "$REPONAME" > README.md
@@ -42,12 +42,12 @@ cp -R $HOME/.git gh-pages/.git
 cd gh-pages
 cp -Rf $HOME/${BUILD_DIR}/* .
 # custom domain?
-if [ ! -z "$CNAME" ] then
+if [ ! -z "$CNAME" ]; then
   echo "Add custom domain file"
   echo "$CNAME" > CNAME
 fi
 # .nojekyll
-if [ "$JEKYLL_SITE" != "YES" ] then
+if [ "$JEKYLL_SITE" != "YES" ]; then
   echo "Disable Jekyll"
   touch .nojekyll
 fi
