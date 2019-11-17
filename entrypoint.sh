@@ -27,7 +27,7 @@ cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$EMAIL"
 if [ -z "$(git ls-remote --heads https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${TARGET_BRANCH})" ]; then
-  git checkout --orphan $TARGET_BRANCH
+  git checkout --orphan https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH
   git rm -rf .
   echo "$REPONAME" > README.md
   git add README.md
