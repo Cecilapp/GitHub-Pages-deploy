@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: |
-          mkdir -R www/_site
+          mkdir -p www/_site
           cat > www/_site/index.html <<EOL
           <!doctype html>
           <html>
