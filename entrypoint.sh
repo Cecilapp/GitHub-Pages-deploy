@@ -22,7 +22,10 @@ fi
 
 echo "### Started deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"
 
-cp -R $BUILD_DIR $HOME/$BUILD_DIR
+# remove the ending slash if exists
+BUILD_DIR=${BUILD_DIR%/}
+mkdir -p $HOME/$BUILD_DIR
+cp -R $BUILD_DIR/* $HOME/$BUILD_DIR/
 cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$EMAIL"
