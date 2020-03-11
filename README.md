@@ -2,7 +2,7 @@
 
 A GitHub Action to deploy a static site on GitHub Pages.
 
-![Deploy to GitHub Pages](GitHub-Pages-deploy.gif)
+![Deploy to GitHub Pages](GitHub-Pages-deploy.png)
 
 ## Usage
 
@@ -33,3 +33,9 @@ jobs:
 - `BUILD_DIR` (required): Where static/public files are (`_site` by default)
 - `CNAME`: The custom domain name (ie: `narno.com`)
 - `JEKYLL_SITE`: Set `YES` in case of a [Jekyll](https://jekyllrb.com) site (`NO` by default)
+
+## License
+
+_GitHub Pages deploy_ is a free software distributed under the terms of the MIT license.
+
+© [Arnaud Ligny](https://arnaudligny.fr)
