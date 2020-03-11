@@ -21,9 +21,9 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@master
       env:
-        EMAIL: arnaud@ligny.org               # must be a verified email
-        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }} # https://github.com/settings/tokens
-        BUILD_DIR: _site/                     # "_site/" by default
-        CNAME: narno.com                      # in case of custom domain
-        JEKYLL_SITE: "YES"                    # only in case of a Jekyll site
+        EMAIL: arnaud@ligny.org               # must be a verified email (required)
+        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }} # create it at https://github.com/settings/tokens (required)
+        BUILD_DIR: _site                      # build directory ("_site" by default)
+        CNAME: narno.com                      # custom domain (optional)
+        JEKYLL_SITE: "YES"                    # "YES" in case of a Jekyll site (optional)
 ```
