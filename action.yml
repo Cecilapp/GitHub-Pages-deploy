@@ -4,7 +4,6 @@ author: 'Arnaud Ligny'
 branding:
   icon: 'upload-cloud'
   color: 'black'
-  
 runs:
   using: 'docker'
   image: 'Dockerfile'
