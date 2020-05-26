@@ -28,6 +28,10 @@ jobs:
         BUILD_DIR: _site
 ```
 
+### Warning
+
+If you get the following fatal error that means you forgot to create the requires access token (see [configuration](#configuration)): `fatal: could not read Username for 'https://github.com': No such device or address`.
+
 ### Configuration
 
 - `EMAIL` (required): A - verified - email
