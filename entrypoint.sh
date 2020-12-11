@@ -2,7 +2,7 @@
 set -e
 
 # commiter email
-if [ -z "$EMAIL" ]; then
+if [ -z "$INPUT_EMAIL" ]; then
   echo "A verified email is required"
   exit 1
 fi
@@ -16,25 +16,25 @@ else
   TARGET_BRANCH="gh-pages"
 fi
 # build dir
-if [ -z "$BUILD_DIR" ]; then
+if [ -z "$INPUT_BUILD_DIR" ]; then
   BUILD_DIR="_site"
 fi
 
 echo "### Started deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"
 
-# DEBUG
-echo ">>$INPUT_EMAIL\n"
-echo ">>$INPUT_BUILD_DIR\n"
-echo ">>$INPUT_CNAME\n"
-echo ">>$INPUT_JEKYLL\n"
+echo "Configuration:\n"
+echo "email: $INPUT_EMAIL\n"
+echo "build_dir: $INPUT_BUILD_DIR\n"
+echo "cname: $INPUT_CNAME\n"
+echo "Jekyll: $INPUT_JEKYLL\n"
 
 # remove the ending slash if exists
 BUILD_DIR=${BUILD_DIR%/}
-mkdir -p $HOME/$BUILD_DIR
-cp -R $BUILD_DIR/* $HOME/$BUILD_DIR/
+mkdir -p $HOME/$INPUT_BUILD_DIR
+cp -R $INPUT_BUILD_DIR/* $HOME/$INPUT_BUILD_DIR/
 cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
-git config --global user.email "$EMAIL"
+git config --global user.email "$INPUT_EMAIL"
 if [ -z "$(git ls-remote --heads https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${TARGET_BRANCH})" ]; then
   git clone --quiet https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
   cd $TARGET_BRANCH
@@ -54,13 +54,12 @@ cp -R $HOME/.git $TARGET_BRANCH/.git
 cd $TARGET_BRANCH
 cp -Rf $HOME/${BUILD_DIR}/* .
 # custom domain?
-if [ ! -z "$CNAME" ]; then
+if [ ! -z "$INPUT_CNAME" ]; then
   echo "Add custom domain file"
-  echo "$CNAME" > CNAME
+  echo "$INPUT_CNAME" > CNAME
 fi
 # .nojekyll
-if [ "$JEKYLL_SITE" != "YES" ]; then
-  echo "Disable Jekyll"
+if [ "$INPUT_JEKYLL" != "yes" ]; then
   touch .nojekyll
 fi
 # Nothing to deploy?

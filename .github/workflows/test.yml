@@ -33,5 +33,6 @@ jobs:
       uses: ./
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        EMAIL: arnaud@ligny.org
-        BUILD_DIR: www/_site/
+      with:
+        email: arnaud@ligny.org
+        build_dir: www/_site/
