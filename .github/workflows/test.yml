@@ -33,5 +33,5 @@ jobs:
       uses: ./
       env:
         EMAIL: arnaud@ligny.org
-        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BUILD_DIR: www/_site/
