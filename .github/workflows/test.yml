@@ -32,6 +32,6 @@ jobs:
       if: success()
       uses: Cecilapp/GitHub-Pages-deploy@master
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         EMAIL: arnaud@ligny.org
         BUILD_DIR: www/_site/
