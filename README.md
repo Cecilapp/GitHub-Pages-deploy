@@ -24,22 +24,12 @@ jobs:
       uses: Cecilapp/GitHub-Pages-deploy@master
       env:
         EMAIL: arnaud@ligny.org
-        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BUILD_DIR: _site
 ```
-
-### Warning
-
-```
-fatal: could not read Username for 'https://github.com': No such device or address
-```
-
-If you got this fatal error that means you forgot to create the requires access token (see [configuration](#configuration)).
 
 ### Configuration
 
 - `EMAIL` (required): A - verified - email
-- `GH_TOKEN` (required): A [Personal Access Tokens](https://github.com/settings/tokens) stored in the `ACCESS_TOKEN` project Secret
 - `BUILD_DIR` (required): Where static/public files are (`_site` by default)
 - `CNAME`: The custom domain name (ie: `narno.com`)
 - `JEKYLL_SITE`: Set `YES` in case of a [Jekyll](https://jekyllrb.com) site (`NO` by default)
