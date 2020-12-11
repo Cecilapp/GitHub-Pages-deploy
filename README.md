@@ -13,7 +13,7 @@ name: GitHub Pages deploy
 on:
   push:
     branches:
-      - master
+     - master
 jobs:
   checkout-and-deploy:
     runs-on: ubuntu-latest
@@ -30,7 +30,11 @@ jobs:
 
 ### Warning
 
-If you get the following fatal error that means you forgot to create the requires access token (see [configuration](#configuration)): `fatal: could not read Username for 'https://github.com': No such device or address`.
+```
+fatal: could not read Username for 'https://github.com': No such device or address
+```
+
+If you got this fatal error that means you forgot to create the requires access token (see [configuration](#configuration)).
 
 ### Configuration
 
