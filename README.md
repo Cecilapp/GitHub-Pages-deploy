@@ -4,7 +4,7 @@
 
 ![Deploy to GitHub Pages](GitHub-Pages-deploy.png)
 
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FCecilapp%2FGitHub-Pages-deploy%2Fbadge&style=flat)](https://actions-badge.atrox.dev/Cecilapp/GitHub-Pages-deploy/goto)
+![test](https://github.com/Cecilapp/GitHub-Pages-deploy/workflows/test/badge.svg)
 
 ## Usage
 
