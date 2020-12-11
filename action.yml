@@ -1,6 +1,12 @@
 name: 'GH Pages deploy'
 description: 'A GitHub Action to deploy a static site on GitHub Pages.'
 author: 'Arnaud Ligny'
+
+inputs: 
+  test:
+    description: 'This is a test'
+    default: 'test'
+
 branding:
   icon: 'upload-cloud'
   color: 'black'

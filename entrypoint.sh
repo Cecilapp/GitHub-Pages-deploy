@@ -22,6 +22,9 @@ fi
 
 echo "### Started deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"
 
+# DEBUG
+echo ">>$INPUT_TEST"
+
 # remove the ending slash if exists
 BUILD_DIR=${BUILD_DIR%/}
 mkdir -p $HOME/$BUILD_DIR
