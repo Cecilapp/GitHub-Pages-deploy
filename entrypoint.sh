@@ -1,37 +1,29 @@
 #!/bin/sh
 set -e
 
-# commiter email
-if [ -z "$INPUT_EMAIL" ]; then
-  echo "A verified email is required"
-  exit 1
-fi
 REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)"
 OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)"
 GHIO="${OWNER}.github.io"
-# target branch
 if [[ "$REPONAME" == "$GHIO" ]]; then
   TARGET_BRANCH="master"
 else
   TARGET_BRANCH="gh-pages"
 fi
-# build dir
-if [ -z "$INPUT_BUILD_DIR" ]; then
-  BUILD_DIR="_site"
-fi
 
 echo "### Started deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"
 
-echo "Configuration:\n"
-echo "email: $INPUT_EMAIL\n"
-echo "build_dir: $INPUT_BUILD_DIR\n"
-echo "cname: $INPUT_CNAME\n"
-echo "Jekyll: $INPUT_JEKYLL\n"
+echo "Configuration:"
+echo "- email: $INPUT_EMAIL"
+echo "- build_dir: $BUILD_DIR"
+echo "- cname: $INPUT_CNAME"
+echo "- Jekyll: $INPUT_JEKYLL"
 
-# remove the ending slash if exists
-BUILD_DIR=${BUILD_DIR%/}
-mkdir -p $HOME/$INPUT_BUILD_DIR
-cp -R $INPUT_BUILD_DIR/* $HOME/$INPUT_BUILD_DIR/
+# build_dir
+$BUILD_DIR = $INPUT_BUILD_DIR
+BUILD_DIR=${BUILD_DIR%/} # remove the ending slash if exists
+
+mkdir -p $HOME/$BUILD_DIR
+cp -R $BUILD_DIR/* $HOME/$BUILD_DIR/
 cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$INPUT_EMAIL"
@@ -53,9 +45,9 @@ rm -rf $TARGET_BRANCH/*
 cp -R $HOME/.git $TARGET_BRANCH/.git
 cd $TARGET_BRANCH
 cp -Rf $HOME/${BUILD_DIR}/* .
-# custom domain?
+
+# Custom domain
 if [ ! -z "$INPUT_CNAME" ]; then
-  echo "Add custom domain file"
   echo "$INPUT_CNAME" > CNAME
 fi
 # .nojekyll
