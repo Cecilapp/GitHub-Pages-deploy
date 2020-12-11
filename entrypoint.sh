@@ -23,7 +23,10 @@ fi
 echo "### Started deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"
 
 # DEBUG
-echo ">>$INPUT_TEST"
+echo ">>$INPUT_EMAIL\n"
+echo ">>$INPUT_BUILD_DIR\n"
+echo ">>$INPUT_CNAME\n"
+echo ">>$INPUT_JEKYLL\n"
 
 # remove the ending slash if exists
 BUILD_DIR=${BUILD_DIR%/}
