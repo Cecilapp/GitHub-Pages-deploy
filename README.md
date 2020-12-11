@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@master
       env:
