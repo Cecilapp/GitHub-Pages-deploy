@@ -32,6 +32,6 @@ jobs:
       if: success()
       uses: ./
       env:
-        EMAIL: arnaud@ligny.org
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        EMAIL: arnaud@ligny.org
         BUILD_DIR: www/_site/

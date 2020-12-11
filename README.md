@@ -1,6 +1,6 @@
 # GitHub Pages deploy
 
-> A GitHub Action to deploy a static site on GitHub Pages.
+> This deploys a static site on GitHub Pages.
 
 ![Deploy to GitHub Pages](GitHub-Pages-deploy.png)
 
@@ -8,12 +8,14 @@
 
 ## Usage
 
+See [action.yml](action.yml).
+
 ```yml
 name: GitHub Pages deploy
 on:
   push:
     branches:
-     - master
+    - master
 jobs:
   checkout-and-deploy:
     runs-on: ubuntu-latest
@@ -23,6 +25,7 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@master
       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         EMAIL: arnaud@ligny.org
         BUILD_DIR: _site
 ```
