@@ -1,5 +1,5 @@
 name: 'GH Pages deploy'
-description: 'A GitHub Action to deploy a static site on GitHub Pages.'
+description: 'This deploys a static site on GitHub Pages.'
 author: 'Arnaud Ligny'
 inputs: 
   email:
