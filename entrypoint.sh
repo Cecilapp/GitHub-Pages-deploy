@@ -14,7 +14,7 @@ echo "### Started deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"
 
 echo "Configuration:"
 echo "- email: $INPUT_EMAIL"
-echo "- build_dir: $BUILD_DIR"
+echo "- build_dir: $INPUT_BUILD_DIR"
 echo "- cname: $INPUT_CNAME"
 echo "- Jekyll: $INPUT_JEKYLL"
 
