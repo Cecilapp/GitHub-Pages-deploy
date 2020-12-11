@@ -10,6 +10,18 @@
 
 See [action.yml](action.yml).
 
+```yml
+    steps:
+    - name: Deploy to GitHub Pages
+      uses: Cecilapp/GitHub-Pages-deploy@3.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        email: username@domain.tld
+        build_dir: _site
+        cname: domain.tld
+```
+
 **Workflow example:**
 
 ```yml
@@ -28,12 +40,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Deploy to GitHub Pages
-      uses: Cecilapp/GitHub-Pages-deploy@master
+      uses: Cecilapp/GitHub-Pages-deploy@3.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         email: arnaud@ligny.org
         build_dir: _site
+    ```
 ```
 
 ## License
