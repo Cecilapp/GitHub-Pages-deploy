@@ -11,6 +11,9 @@ else
   TARGET_BRANCH="gh-pages"
 fi
 
+# DEBUG
+echo ">>>${default-branch}"
+
 echo "### Started deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"
 
 echo "- email: $INPUT_EMAIL"
