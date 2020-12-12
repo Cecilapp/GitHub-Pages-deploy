@@ -10,7 +10,7 @@ inputs:
     required: false
     default: '_site'
   branch:
-    description: 'Which branch to publish files.'
+    description: 'Which branch to push files.'
     required: false
   cname:
     description: 'The custom domain name.'
