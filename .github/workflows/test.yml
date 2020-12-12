@@ -38,7 +38,7 @@ jobs:
         email: arnaud@ligny.org
         build_dir: www/_site/
     
-    - name: Output result
+    - name: Deploy result
       run: echo ${{ steps.deploy.outputs.result }}
 
   deploy-docs:
@@ -58,5 +58,5 @@ jobs:
         build_dir: docs
         branch: docs
 
-    - name: Output result
+    - name: Deploy result
       run: echo ${{ steps.deploy.outputs.result }}
