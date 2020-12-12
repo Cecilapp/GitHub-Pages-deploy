@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-# which branch?
+# Which branch?
 REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)"
 OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)"
 GHIO="${OWNER}.github.io"
@@ -9,6 +9,10 @@ if [[ "$REPONAME" == "$GHIO" ]]; then
   TARGET_BRANCH="master"
 else
   TARGET_BRANCH="gh-pages"
+fi
+# Custom branch
+if [ ! -z "$INPUT_BRANCH" ]; then
+  TARGET_BRANCH=$INPUT_BRANCH
 fi
 
 echo "### Started deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"

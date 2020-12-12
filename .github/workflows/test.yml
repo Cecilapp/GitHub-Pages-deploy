@@ -51,3 +51,4 @@ jobs:
       with:
         email: arnaud@ligny.org
         build_dir: docs
+        branch: docs

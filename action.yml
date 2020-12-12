@@ -6,9 +6,12 @@ inputs:
     description: 'A verified email.'
     required: true
   build_dir:
-    description: 'Where static/public files are'
+    description: 'Where static files are.'
     required: false
     default: '_site'
+  branch:
+    description: 'Which branch to publish files.'
+    required: false
   cname:
     description: 'The custom domain name.'
     required: false
