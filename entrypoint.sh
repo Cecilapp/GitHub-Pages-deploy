@@ -6,13 +6,10 @@ REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)"
 OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)"
 GHIO="${OWNER}.github.io"
 if [[ "$REPONAME" == "$GHIO" ]]; then
-  TARGET_BRANCH="${default-branch}"
+  TARGET_BRANCH="master"
 else
   TARGET_BRANCH="gh-pages"
 fi
-
-# DEBUG
-echo ">>>${default-branch}"
 
 echo "### Started deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"
 
