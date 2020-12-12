@@ -23,41 +23,40 @@ echo "- build_dir: $INPUT_BUILD_DIR"
 echo "- cname: $INPUT_CNAME"
 echo "- Jekyll: $INPUT_JEKYLL"
 
-# DEBUG
-echo ">>>$HOME"
-
 # Prepare build_dir
 BUILD_DIR=$INPUT_BUILD_DIR
 BUILD_DIR=${BUILD_DIR%/} # remove the ending slash if exists
-mkdir -p $HOME/$BUILD_DIR
-cp -R $BUILD_DIR/* $HOME/$BUILD_DIR/
+mkdir -p "$HOME/build/$BUILD_DIR"
+cp -R $BUILD_DIR/* "$HOME/build/$BUILD_DIR/"
 
 # Create or clone the gh-pages repo
-cd $HOME
+mkdir -p "$HOME/branch/"
+cd "$HOME/branch/"
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$INPUT_EMAIL"
 if [ -z "$(git ls-remote --heads https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${TARGET_BRANCH})" ]; then
-  echo "Create branch ${TARGET_BRANCH}"
+  echo "Create branch '${TARGET_BRANCH}'"
   git clone --quiet https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
   cd $TARGET_BRANCH
   git checkout --orphan $TARGET_BRANCH
   git rm -rf .
   echo "$REPONAME" > README.md
   git add README.md
-  git commit -a -m "Create $TARGET_BRANCH branch"
+  git commit -a -m "Create '$TARGET_BRANCH' branch"
   git push origin $TARGET_BRANCH
   cd ..
 else
-  echo "Clone branch ${TARGET_BRANCH}"
+  echo "Clone branch '${TARGET_BRANCH}'"
   git clone --quiet --branch=$TARGET_BRANCH https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
 fi
 
 # Sync repository with build_dir
-cp -R $TARGET_BRANCH/.git $HOME/.git
+cp -R $TARGET_BRANCH/.git "$HOME/build/$BUILD_DIR/.git"
 rm -rf $TARGET_BRANCH/*
-cp -R $HOME/.git $TARGET_BRANCH/.git
+cp -R "$HOME/build/$BUILD_DIR/.git" $TARGET_BRANCH/.git
+# Copy files
 cd $TARGET_BRANCH
-cp -Rf $HOME/${BUILD_DIR}/* .
+cp -Rf "$HOME/build/$BUILD_DIR/*" .
 
 # Custom domain
 if [ ! -z "$INPUT_CNAME" ]; then
