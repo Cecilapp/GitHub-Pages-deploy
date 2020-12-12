@@ -46,7 +46,6 @@ jobs:
       with:
         email: arnaud@ligny.org
         build_dir: _site
-    ```
 ```
 
 ## License
