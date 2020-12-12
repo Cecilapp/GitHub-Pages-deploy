@@ -4,7 +4,7 @@
 
 ![Deploy to GitHub Pages](docs/GitHub-Pages-deploy.png)
 
-![Test](https://github.com/Cecilapp/GitHub-Pages-deploy/workflows/test/badge.svg)
+[![test](https://github.com/Cecilapp/GitHub-Pages-deploy/workflows/test/badge.svg)](https://github.com/Cecilapp/GitHub-Pages-deploy/actions?query=workflow%3Atest)
 
 ## News
 
