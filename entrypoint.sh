@@ -26,12 +26,12 @@ echo "- Jekyll: $INPUT_JEKYLL"
 # Prepare build_dir
 BUILD_DIR=$INPUT_BUILD_DIR
 BUILD_DIR=${BUILD_DIR%/} # remove the ending slash if exists
-mkdir -p "$HOME/build/$BUILD_DIR"
-cp -R $BUILD_DIR/* "$HOME/build/$BUILD_DIR/"
+mkdir -p $HOME/build/$BUILD_DIR
+cp -R $BUILD_DIR/* $HOME/build/$BUILD_DIR/
 
 # Create or clone the gh-pages repo
-mkdir -p "$HOME/branch/"
-cd "$HOME/branch/"
+mkdir -p $HOME/branch/
+cd $HOME/branch/
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$INPUT_EMAIL"
 if [ -z "$(git ls-remote --heads https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${TARGET_BRANCH})" ]; then
@@ -51,12 +51,12 @@ else
 fi
 
 # Sync repository with build_dir
-cp -R $TARGET_BRANCH/.git "$HOME/build/$BUILD_DIR/.git"
+cp -R $TARGET_BRANCH/.git $HOME/build/$BUILD_DIR/.git
 rm -rf $TARGET_BRANCH/*
-cp -R "$HOME/build/$BUILD_DIR/.git" $TARGET_BRANCH/.git
+cp -R $HOME/build/$BUILD_DIR/.git $TARGET_BRANCH/.git
 # Copy files
 cd $TARGET_BRANCH
-cp -Rf "$HOME/build/$BUILD_DIR/*" .
+cp -Rf $HOME/build/$BUILD_DIR/* .
 
 # Custom domain
 if [ ! -z "$INPUT_CNAME" ]; then
