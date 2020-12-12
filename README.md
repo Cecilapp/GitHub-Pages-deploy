@@ -24,6 +24,7 @@ See [action.yml](action.yml).
   with:
     email: username@domain.tld
     build_dir: _site
+    branch: website
     cname: domain.tld
 ```
 
