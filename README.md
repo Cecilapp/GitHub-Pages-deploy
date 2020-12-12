@@ -23,9 +23,10 @@ See [action.yml](action.yml).
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
     email: username@domain.tld
-    build_dir: _site
-    branch: website
-    cname: domain.tld
+    build_dir: _site  # optional
+    branch: website   # optional
+    cname: domain.tld # optional
+    jekyll: no        # optional
 ```
 
 **Workflow example:**
