@@ -2,9 +2,9 @@
 
 > This Action deploys a static site on GitHub Pages.
 
-![Deploy to GitHub Pages](GitHub-Pages-deploy.png)
+![Deploy to GitHub Pages](docs/GitHub-Pages-deploy.png)
 
-![test](https://github.com/Cecilapp/GitHub-Pages-deploy/workflows/test/badge.svg)
+![Test](https://github.com/Cecilapp/GitHub-Pages-deploy/workflows/test/badge.svg)
 
 ## News
 
@@ -37,12 +37,15 @@ on:
     - master
 
 jobs:
-  checkout-and-deploy:
+  checkout-build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: Build
+      uses: # build my static site
 
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@3.0.0
