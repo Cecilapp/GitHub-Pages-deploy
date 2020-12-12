@@ -23,6 +23,9 @@ echo "- build_dir: $INPUT_BUILD_DIR"
 echo "- cname: $INPUT_CNAME"
 echo "- Jekyll: $INPUT_JEKYLL"
 
+# DEBUG
+echo ">>>$HOME"
+
 # Prepare build_dir
 BUILD_DIR=$INPUT_BUILD_DIR
 BUILD_DIR=${BUILD_DIR%/} # remove the ending slash if exists
