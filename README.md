@@ -54,6 +54,12 @@ jobs:
         build_dir: _site
 ```
 
+## Note about user and organization sites
+
+> The default publishing source for user and organization sites is the root of the default branch for the repository.
+
+See [documentation](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-github-pages#publishing-sources-for-github-pages-sites).
+
 ## License
 
 _GitHub Pages deploy_ is a free software distributed under the terms of the MIT license.
