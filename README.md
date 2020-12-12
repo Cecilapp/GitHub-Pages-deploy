@@ -8,7 +8,7 @@
 
 ## News
 
-Version 3.x.x (`master`) now use the workflow `secrets.GITHUB_TOKEN` instead of the Personal access tokens and inputs (`with`) instead of environment variables.
+Version 3.x.x (`master`) now use the `secrets.GITHUB_TOKEN` instead of a Personal access token, and inputs (`with`) instead of environment variables.
 
 If you want to continue using the previous release (with environment variables) you must set the version: `Cecilapp/GitHub-Pages-deploy@2.0.1`.
 
@@ -17,7 +17,6 @@ If you want to continue using the previous release (with environment variables) 
 See [action.yml](action.yml).
 
 ```yml
-    steps:
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@3.0.0
       env:
