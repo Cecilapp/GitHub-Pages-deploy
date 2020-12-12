@@ -49,6 +49,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Deploy
+      id: deploy
       uses: ./
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -56,3 +57,6 @@ jobs:
         email: arnaud@ligny.org
         build_dir: docs
         branch: docs
+
+    - name: Get the output result
+      run: echo ${{ steps.deploy.outputs.result }}
