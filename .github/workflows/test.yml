@@ -29,6 +29,7 @@ jobs:
         EOL
 
     - name: Deploy
+      id: deploy
       if: success()
       uses: ./
       env:
@@ -36,6 +37,9 @@ jobs:
       with:
         email: arnaud@ligny.org
         build_dir: www/_site/
+    
+    - name: Get the output result
+      run: echo ${{ steps.deploy.outputs.result }}
 
   deploy-docs:
     runs-on: ubuntu-latest
