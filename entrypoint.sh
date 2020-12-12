@@ -22,6 +22,10 @@ echo "- build_dir: $INPUT_BUILD_DIR"
 echo "- cname: $INPUT_CNAME"
 echo "- Jekyll: $INPUT_JEKYLL"
 
+# Create HOME
+HOME="${GITHUB_WORKSPACE}/HOME"
+mkdir $HOME
+
 # Prepare build_dir
 BUILD_DIR=$INPUT_BUILD_DIR
 BUILD_DIR=${BUILD_DIR%/} # remove the ending slash if exists
@@ -33,6 +37,7 @@ cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$INPUT_EMAIL"
 if [ -z "$(git ls-remote --heads https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${TARGET_BRANCH})" ]; then
+  echo "Create branch ${TARGET_BRANCH}"
   git clone --quiet https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
   cd $TARGET_BRANCH
   git checkout --orphan $TARGET_BRANCH
@@ -43,10 +48,11 @@ if [ -z "$(git ls-remote --heads https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.
   git push origin $TARGET_BRANCH
   cd ..
 else
+  echo "Clone branch ${TARGET_BRANCH}"
   git clone --quiet --branch=$TARGET_BRANCH https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git $TARGET_BRANCH > /dev/null
 fi
 
-# Sync repo with build_dir
+# Sync repository with build_dir
 cp -R $TARGET_BRANCH/.git $HOME/.git
 rm -rf $TARGET_BRANCH/*
 cp -R $HOME/.git $TARGET_BRANCH/.git
