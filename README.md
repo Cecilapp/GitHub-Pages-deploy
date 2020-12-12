@@ -6,6 +6,12 @@
 
 ![test](https://github.com/Cecilapp/GitHub-Pages-deploy/workflows/test/badge.svg)
 
+## News
+
+Version 3.x.x (`master`) now use the workflow `secrets.GITHUB_TOKEN` instead of the Personal access tokens and inputs (`with`) instead of environment variables.
+
+If you want to continue using the previous release (with environment variables) you must set the version: `Cecilapp/GitHub-Pages-deploy@2.0.1`.
+
 ## Usage
 
 See [action.yml](action.yml).
