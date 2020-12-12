@@ -3,10 +3,10 @@ name: test
 on:
   push:
     branches:
-    - master
+    - $default-branch
 
 jobs:
-  checkout-build-and-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,7 +37,7 @@ jobs:
         email: arnaud@ligny.org
         build_dir: www/_site/
 
-  checkout-and-deploy:
+  deploy-docs:
     runs-on: ubuntu-latest
 
     steps:
