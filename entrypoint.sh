@@ -22,18 +22,15 @@ echo "- build_dir: $INPUT_BUILD_DIR"
 echo "- cname: $INPUT_CNAME"
 echo "- Jekyll: $INPUT_JEKYLL"
 
-# Create HOME
-HOME="${GITHUB_WORKSPACE}/HOME"
-mkdir $HOME
-
 # Prepare build_dir
+HOME="${GITHUB_WORKSPACE}/TMP"
 BUILD_DIR=$INPUT_BUILD_DIR
 BUILD_DIR=${BUILD_DIR%/} # remove the ending slash if exists
 mkdir -p $HOME/$BUILD_DIR
 cp -R $BUILD_DIR/* $HOME/$BUILD_DIR/
-cd $HOME
 
 # Create or clone the gh-pages repo
+cd $HOME
 git config --global user.name "$GITHUB_ACTOR"
 git config --global user.email "$INPUT_EMAIL"
 if [ -z "$(git ls-remote --heads https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${TARGET_BRANCH})" ]; then
