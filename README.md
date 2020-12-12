@@ -18,7 +18,7 @@ See [action.yml](action.yml).
 
 ```yml
 - name: Deploy to GitHub Pages
-  uses: Cecilapp/GitHub-Pages-deploy@3.0.0
+  uses: Cecilapp/GitHub-Pages-deploy@3.1.0
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
@@ -50,7 +50,7 @@ jobs:
       uses: # build my static site
 
     - name: Deploy to GitHub Pages
-      uses: Cecilapp/GitHub-Pages-deploy@3.0.0
+      uses: Cecilapp/GitHub-Pages-deploy@3.1.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
