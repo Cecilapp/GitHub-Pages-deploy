@@ -6,7 +6,7 @@ on:
     - master
 
 jobs:
-  checkout-and-deploy:
+  checkout-build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -36,3 +36,18 @@ jobs:
       with:
         email: arnaud@ligny.org
         build_dir: www/_site/
+
+  checkout-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Deploy
+      uses: ./
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        email: arnaud@ligny.org
+        build_dir: docs
