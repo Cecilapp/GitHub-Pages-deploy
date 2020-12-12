@@ -70,11 +70,22 @@ fi
 
 # Deploy/Push (or not?)
 if [ -z "$(git status --porcelain)" ]; then
-  echo "Nothing to deploy"
+  result="Nothing to deploy"
 else
   git add -Af .
   git commit -m "$GITHUB_ACTOR published a site update"
   git push -fq origin $TARGET_BRANCH > /dev/null
+  # push is OK?
+  if [ $? = 0 ]
+  then
+    result="Deploy succeeded"
+  else
+    result="Deploy failed"
+  fi
 fi
+
+# Set output
+echo $result
+echo "::set-output name=result::$result"
 
 echo "### Finished deploy"

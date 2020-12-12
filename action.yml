@@ -19,6 +19,9 @@ inputs:
     description: '`yes` in case of a Jekyll site.'
     required: false
     default: 'no'
+outputs:
+  result:
+    description: 'The deploy result'
 branding:
   icon: 'upload-cloud'
   color: 'black'
