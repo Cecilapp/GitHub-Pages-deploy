@@ -8,9 +8,9 @@
 
 ## News
 
-_GitHub Pages deploy_ version 3.x.x (`master`) now use the [`secrets.GITHUB_TOKEN`](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow) instead of a [personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) (PAT), and [inputs parameters](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepswith) instead of environment variables.
+_GitHub Pages deploy_ v3 now use the [`secrets.GITHUB_TOKEN`](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow) instead of a [personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) (PAT), and [inputs parameters](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepswith) instead of environment variables.
 
-If you want to continue using the previous release (with environment variables) you must set the version: [`Cecilapp/GitHub-Pages-deploy@2.0.1`](https://github.com/marketplace/actions/gh-pages-deploy?version=2.0.1).
+If you want to continue using the previous release (with environment variables) you must set the version: [`Cecilapp/GitHub-Pages-deploy@v2`](https://github.com/marketplace/actions/gh-pages-deploy?version=2.0.1).
 
 ## Usage
 
@@ -18,7 +18,7 @@ See [action.yml](action.yml).
 
 ```yml
 - name: Deploy to GitHub Pages
-  uses: Cecilapp/GitHub-Pages-deploy@3.1.0
+  uses: Cecilapp/GitHub-Pages-deploy@v3
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
@@ -50,7 +50,7 @@ jobs:
       uses: # build my static site
 
     - name: Deploy to GitHub Pages
-      uses: Cecilapp/GitHub-Pages-deploy@3.1.0
+      uses: Cecilapp/GitHub-Pages-deploy@v3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
