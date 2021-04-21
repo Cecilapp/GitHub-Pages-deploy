@@ -63,6 +63,12 @@ if [ ! -z "$INPUT_CNAME" ]; then
   echo "$INPUT_CNAME" > CNAME
 fi
 
+# Custom commit message
+if [ -z "$INPUT_COMMIT_MESSAGE" ]
+then
+  INPUT_COMMIT_MESSAGE="$GITHUB_ACTOR published a site update"
+fi
+
 # .nojekyll
 if [ "$INPUT_JEKYLL" != "yes" ]; then
   touch .nojekyll
@@ -73,7 +79,7 @@ if [ -z "$(git status --porcelain)" ]; then
   result="Nothing to deploy"
 else
   git add -Af .
-  git commit -m "$GITHUB_ACTOR published a site update"
+  git commit -m "$INPUT_COMMIT_MESSAGE"
   git push -fq origin $TARGET_BRANCH > /dev/null
   # push is OK?
   if [ $? = 0 ]
