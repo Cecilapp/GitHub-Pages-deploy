@@ -19,6 +19,9 @@ inputs:
     description: '`yes` in case of a Jekyll site.'
     required: false
     default: 'no'
+  commit_message:
+    description: 'A custom commit message.'
+    required: false
 outputs:
   result:
     description: 'The deploy result'
