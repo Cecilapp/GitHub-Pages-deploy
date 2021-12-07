@@ -15,7 +15,7 @@ if [ ! -z "$INPUT_BRANCH" ]; then
   TARGET_BRANCH=$INPUT_BRANCH
 fi
 
-echo "### Started deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"
+echo "Starting deploy to $GITHUB_REPOSITORY/$TARGET_BRANCH"
 
 echo "Configuration:"
 echo "- email: $INPUT_EMAIL"
@@ -93,5 +93,3 @@ fi
 # Set output
 echo $result
 echo "::set-output name=result::$result"
-
-echo "### Finished deploy"
