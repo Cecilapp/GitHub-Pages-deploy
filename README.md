@@ -46,7 +46,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build
-      uses: # build my static site
+      uses: # build your static site
 
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@v3
