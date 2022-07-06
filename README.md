@@ -1,8 +1,6 @@
 # GitHub Pages deploy
 
-> This Action deploys a static site on GitHub Pages.
-
-![Deploy to GitHub Pages](docs/GitHub-Pages-deploy.png)
+This Action deploys a static site on GitHub Pages.
 
 [![test](https://github.com/Cecilapp/GitHub-Pages-deploy/workflows/test/badge.svg)](https://github.com/Cecilapp/GitHub-Pages-deploy/actions?query=workflow%3Atest)
 
