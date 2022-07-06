@@ -40,23 +40,3 @@ jobs:
     
     - name: Deploy result
       run: echo ${{ steps.deploy.outputs.result }}
-
-  deploy-docs:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Deploy
-      id: deploy
-      uses: ./
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        email: arnaud@ligny.org
-        build_dir: docs
-        branch: docs
-
-    - name: Deploy result
-      run: echo ${{ steps.deploy.outputs.result }}
