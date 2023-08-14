@@ -92,4 +92,4 @@ fi
 
 # Set output
 echo $result
-echo "::set-output name=result::$result"
+echo "result=$result" >> $GITHUB_OUTPUT
