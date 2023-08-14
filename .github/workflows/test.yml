@@ -3,40 +3,40 @@ name: test
 on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Build
-      run: |
-        mkdir -p www/_site
-        cat > www/_site/index.html <<EOL
-        <!doctype html>
-        <html>
-          <head>
-            <title>GH Pages deploy</title>
-          </head>
-          <body>
-            <p>GitHub Pages with <strong>${{ github.sha }}</strong> commit ID has been deployed through <a href="https://github.com/marketplace/actions/gh-pages-deploy">GH Pages deploy</a>.</p>
-          </body>
-        </html>
-        EOL
+      - name: Build
+        run: |
+          mkdir -p www/_site
+          cat > www/_site/index.html <<EOL
+          <!doctype html>
+          <html>
+            <head>
+              <title>GH Pages deploy</title>
+            </head>
+            <body>
+              <p>GitHub Pages with <strong>${{ github.sha }}</strong> commit ID has been deployed through <a href="https://github.com/marketplace/actions/gh-pages-deploy">GH Pages deploy</a>.</p>
+            </body>
+          </html>
+          EOL
 
-    - name: Deploy
-      id: deploy
-      if: success()
-      uses: ./
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        email: arnaud@ligny.org
-        build_dir: www/_site/
-    
-    - name: Deploy result
-      run: echo ${{ steps.deploy.outputs.result }}
+      - name: Deploy
+        id: deploy
+        if: success()
+        uses: ./
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          email: arnaud@ligny.org
+          build_dir: www/_site/
+
+      - name: Deploy result
+        run: echo ${{ steps.deploy.outputs.result }}
