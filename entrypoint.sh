@@ -92,4 +92,5 @@ fi
 # Set output and summary
 echo $result
 echo "result=$result" >> $GITHUB_OUTPUT
-echo "$result ($BUILD_DIR -> $GITHUB_REPOSITORY/$TARGET_BRANCH)" >> $GITHUB_STEP_SUMMARY
+echo $result >> $GITHUB_STEP_SUMMARY
+echo "> `$BUILD_DIR` copied to $GITHUB_REPOSITORY/$TARGET_BRANCH" >> $GITHUB_STEP_SUMMARY
