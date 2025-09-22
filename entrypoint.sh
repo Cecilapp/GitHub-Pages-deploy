@@ -93,4 +93,4 @@ fi
 echo $result
 echo "result=$result" >> $GITHUB_OUTPUT
 echo $result >> $GITHUB_STEP_SUMMARY
-echo "> `$BUILD_DIR` copied to $GITHUB_REPOSITORY/$TARGET_BRANCH" >> $GITHUB_STEP_SUMMARY
+echo "> $BUILD_DIR copied to $GITHUB_REPOSITORY/$TARGET_BRANCH" >> $GITHUB_STEP_SUMMARY
