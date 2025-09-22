@@ -1,18 +1,15 @@
 name: test
-
 on:
   push:
     branches: [master]
   workflow_dispatch:
-
 jobs:
   build-and-deploy:
+    name: Build and deploy
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Build
         run: |
           mkdir -p www/_site
@@ -27,16 +24,14 @@ jobs:
             </body>
           </html>
           EOL
-
       - name: Deploy
         id: deploy
         if: success()
-        uses: ./
+        uses: ./ # local Action
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: arnaud@ligny.org
           build_dir: www/_site/
-
-      - name: Deploy result
+      - name: Deploy result in a dedicated step
         run: echo ${{ steps.deploy.outputs.result }}
