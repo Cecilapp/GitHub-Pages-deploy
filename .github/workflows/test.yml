@@ -12,8 +12,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Build
         run: |
-          mkdir -p www/_site
-          cat > www/_site/index.html <<EOL
+          mkdir -p _site
+          cat > _site/index.html <<EOL
           <!doctype html>
           <html>
             <head>
@@ -32,6 +32,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: arnaud@ligny.org
-          build_dir: www/_site/
+          build_dir: _site
       - name: Deploy result in a dedicated step
         run: echo ${{ steps.deploy.outputs.result }}
