@@ -82,14 +82,14 @@ else
   git commit -m "$INPUT_COMMIT_MESSAGE"
   git push -fq origin $TARGET_BRANCH > /dev/null
   # push is OK?
-  result="Deploy succeeded"
+  result="🎉 Deploy succeeded"
   if [ $? != 0 ]
   then
-    result="Deploy failed"
+    result="❌ Deploy failed"
   fi
 fi
 
 # Set output and summary
 echo $result
 echo "result=$result" >> $GITHUB_OUTPUT
-echo $result >> $GITHUB_STEP_SUMMARY
+echo "$result ($BUILD_DIR -> $GITHUB_REPOSITORY/$TARGET_BRANCH)" >> $GITHUB_STEP_SUMMARY
