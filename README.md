@@ -2,7 +2,7 @@
 
 This Action deploys a static site on GitHub Pages.
 
-[![test](https://github.com/Cecilapp/GitHub-Pages-deploy/actions/workflows/test.yml/badge.svg)](https://github.com/Cecilapp/GitHub-Pages-deploy/actions/workflows/test.yml)
+[![test](https://github.com/Cecilapp/GitHub-Pages-deploy/actions/workflows/test.yml/badge.svg)](https://github.com/Cecilapp/GitHub-Pages-deploy/actions/workflows/test.yml) [![pages-build-deployment](https://github.com/Cecilapp/GitHub-Pages-deploy/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Cecilapp/GitHub-Pages-deploy/actions/workflows/pages/pages-build-deployment)
 
 ## Usage
 
@@ -30,15 +30,12 @@ on:
   push:
     branches:
       - master
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Build
         uses: # build your static site
 
