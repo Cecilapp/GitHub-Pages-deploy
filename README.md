@@ -15,11 +15,11 @@ See [action.yml](action.yml).
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
     email: username@domain.tld
-    build_dir: _site               # optional
-    branch: website                # optional
-    cname: domain.tld              # optional
-    jekyll: no                     # optional
-    commit_message: custom message # optional
+    build_dir: _site                # "_site" by default
+    branch: website                 # "gh-pages" by default
+    cname: domain.tld               # empty by default
+    jekyll: no                      # "no" by default
+    commit_message: custom message  # optional
 ```
 
 ### Workflow example
