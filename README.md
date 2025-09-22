@@ -14,7 +14,7 @@ See [action.yml](action.yml).
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
-    email: username@domain.tld
+    email: username@domain.tld      # required
     build_dir: _site                # "_site" by default
     branch: website                 # "gh-pages" by default
     cname: domain.tld               # empty by default
