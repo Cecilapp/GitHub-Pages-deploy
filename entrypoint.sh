@@ -92,4 +92,4 @@ fi
 # Set output and summary
 echo $result
 echo "result=$result" >> $GITHUB_OUTPUT
-echo "$result, `${BUILD_DIR}` committed to <https://github.com/$GITHUB_REPOSITORY/tree/$TARGET_BRANCH>" >> $GITHUB_STEP_SUMMARY
+echo "$result, _${BUILD_DIR}_ committed to <https://github.com/$GITHUB_REPOSITORY/tree/$TARGET_BRANCH>" >> $GITHUB_STEP_SUMMARY
